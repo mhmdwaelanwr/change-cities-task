@@ -1,21 +1,26 @@
 # Change Cities
 
-A small React training task for changing between cities and showing simple information about each place.
+A simple front-end training task made with HTML, CSS and JavaScript.
 
-This version is written without JSX and without Vite. React is loaded directly in `index.html`, and the app is written with normal JavaScript and `React.createElement()`.
+The page has three city buttons. When a button is clicked, JavaScript changes the country name, text and flag shown on the page.
 
 ## Files
 
-- `index.html` - page and React CDN links
-- `style.css` - simple CSS
-- `script.js` - React and JavaScript code
+- `index.html` - page structure and buttons
+- `style.css` - simple page style
+- `script.js` - basic JavaScript functions
 
 ## Features
 
 - Change between Cairo, Palestine and Emirates
-- Show country information and flag
-- Remove a city
-- Simple React state using `useState`
+- Show simple information and a flag
+- Remove the selected city
+
+## Technologies
+
+- HTML
+- CSS
+- JavaScript
 
 ## Live Demo
 
