@@ -1,14 +1,15 @@
 # Change Cities
 
-A simple and responsive React application that lets users switch between different Egyptian cities and view dynamic information for each city.
+A simple React application for switching between different locations and displaying the selected country's information and flag. The project follows the ChangeCities example from the React front-end lecture while keeping the layout clean, responsive, and easy to understand.
 
 ## Features
 
-- Change between multiple cities
-- Dynamic city name, description and theme
-- React `useState`
-- Responsive design
-- Clean and simple interface
+- Switch between Cairo, Palestine, and Emirates
+- Update the displayed country, description, and flag
+- Remove the currently selected city
+- React state management with `useState`
+- Responsive layout for desktop and mobile
+- Simple beginner-friendly component structure
 
 ## Technologies
 
@@ -16,6 +17,16 @@ A simple and responsive React application that lets users switch between differe
 - Vite
 - JavaScript
 - CSS
+
+## Live Demo
+
+https://change-cities-task-mhmdwaelanwrs-projects.vercel.app
+
+## Demo GIF
+
+The repository includes a GitHub Actions workflow that records the app automatically and generates a demo GIF in:
+
+`assets/demo/change-cities-demo.gif`
 
 ## Run locally
 
