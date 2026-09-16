@@ -1,0 +1,58 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #eeeeee;
+  margin: 0;
+  padding: 30px 10px;
+}
+
+.container {
+  width: 650px;
+  max-width: 90%;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border: 1px solid #cccccc;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 10px;
+}
+
+.buttons {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 16px;
+  margin: 5px;
+  border: 1px solid #999999;
+  background: #f7f7f7;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #dddddd;
+}
+
+.removeButton {
+  background: #f2b8b8;
+}
+
+.card {
+  border-top: 1px solid #dddddd;
+  padding-top: 15px;
+}
+
+.flag {
+  width: 280px;
+  max-width: 90%;
+  margin-top: 12px;
+  border: 1px solid #cccccc;
+}
+
+.footer {
+  margin-top: 25px;
+  font-size: 13px;
+  color: #666666;
+}
