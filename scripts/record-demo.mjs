@@ -6,10 +6,10 @@ mkdirSync('demo-video', { recursive: true })
 
 const browser = await chromium.launch({ headless: true })
 const context = await browser.newContext({
-  viewport: { width: 900, height: 700 },
+  viewport: { width: 1100, height: 700 },
   recordVideo: {
     dir: 'demo-video',
-    size: { width: 900, height: 700 },
+    size: { width: 1100, height: 700 },
   },
 })
 
@@ -18,7 +18,7 @@ await page.goto('http://127.0.0.1:5173', { waitUntil: 'networkidle' })
 
 await page.waitForTimeout(900)
 
-for (const city of ['Alexandria', 'Luxor', 'Aswan', 'Cairo']) {
+for (const city of ['Palestine', 'Emirates', 'Cairo']) {
   await page.getByRole('button', { name: city }).click()
   await page.waitForTimeout(1100)
 }
