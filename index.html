@@ -1,16 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Change Cities</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="root"></div>
 
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <div class="container">
+    <h2>Change Cities</h2>
+
+    <div class="buttons">
+      <button id="cairoButton" onclick="changeCity('cairo')">Cairo</button>
+      <button id="palestineButton" onclick="changeCity('palestine')">Palestine</button>
+      <button id="emiratesButton" onclick="changeCity('emirates')">Emirates</button>
+      <button onclick="removeCity()">Remove City</button>
+    </div>
+
+    <hr>
+
+    <div id="cityBox">
+      <h1 id="countryName">Egypt</h1>
+      <p id="cityText">Cairo is the capital of Egypt and one of the largest cities in Africa.</p>
+      <img id="cityImage" src="https://flagcdn.com/w640/eg.png" alt="flag">
+    </div>
+
+    <p id="emptyText"></p>
+
+    <p class="footer">By Mohamed Anwar</p>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
