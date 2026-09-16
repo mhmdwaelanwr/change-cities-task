@@ -1,116 +1,54 @@
-var e = React.createElement;
+var currentCity = "cairo";
+var cairoExists = true;
+var palestineExists = true;
+var emiratesExists = true;
 
-var cityData = [
-  {
-    id: 1,
-    name: "Cairo",
-    country: "Egypt",
-    image: "https://flagcdn.com/w640/eg.png",
-    text: "Cairo is the capital of Egypt and one of the largest cities in Africa."
-  },
-  {
-    id: 2,
-    name: "Palestine",
-    country: "Palestine",
-    image: "https://flagcdn.com/w640/ps.png",
-    text: "Palestine is known for its old cities, culture and history."
-  },
-  {
-    id: 3,
-    name: "Emirates",
-    country: "United Arab Emirates",
-    image: "https://flagcdn.com/w640/ae.png",
-    text: "The United Arab Emirates is known for modern cities and tourism."
-  }
-];
+function changeCity(city) {
+  currentCity = city;
 
-function App() {
-  var citiesState = React.useState(cityData);
-  var cities = citiesState[0];
-  var setCities = citiesState[1];
-
-  var activeState = React.useState(cityData[0]);
-  var activeCity = activeState[0];
-  var setActiveCity = activeState[1];
-
-  function changeCity(city) {
-    setActiveCity(city);
+  if (city == "cairo" && cairoExists == true) {
+    document.getElementById("countryName").innerHTML = "Egypt";
+    document.getElementById("cityText").innerHTML = "Cairo is the capital of Egypt and one of the largest cities in Africa.";
+    document.getElementById("cityImage").src = "https://flagcdn.com/w640/eg.png";
   }
 
-  function removeCity() {
-    if (activeCity == null) {
-      return;
-    }
-
-    var newCities = cities.filter(function (city) {
-      return city.id !== activeCity.id;
-    });
-
-    setCities(newCities);
-
-    if (newCities.length > 0) {
-      setActiveCity(newCities[0]);
-    } else {
-      setActiveCity(null);
-    }
+  if (city == "palestine" && palestineExists == true) {
+    document.getElementById("countryName").innerHTML = "Palestine";
+    document.getElementById("cityText").innerHTML = "Palestine is known for its old cities, culture and history.";
+    document.getElementById("cityImage").src = "https://flagcdn.com/w640/ps.png";
   }
 
-  var cityButtons = cities.map(function (city) {
-    return e(
-      "button",
-      {
-        key: city.id,
-        onClick: function () {
-          changeCity(city);
-        }
-      },
-      city.name
-    );
-  });
-
-  cityButtons.push(
-    e(
-      "button",
-      {
-        key: "remove",
-        className: "removeButton",
-        onClick: removeCity
-      },
-      "Remove City"
-    )
-  );
-
-  var cityBox;
-
-  if (activeCity != null) {
-    cityBox = e(
-      "div",
-      { className: "card" },
-      e("h1", null, activeCity.country),
-      e("p", null, activeCity.text),
-      e("img", {
-        className: "flag",
-        src: activeCity.image,
-        alt: activeCity.country + " flag"
-      })
-    );
-  } else {
-    cityBox = e(
-      "div",
-      { className: "card" },
-      e("h2", null, "No cities left")
-    );
+  if (city == "emirates" && emiratesExists == true) {
+    document.getElementById("countryName").innerHTML = "United Arab Emirates";
+    document.getElementById("cityText").innerHTML = "The United Arab Emirates is known for modern cities and tourism.";
+    document.getElementById("cityImage").src = "https://flagcdn.com/w640/ae.png";
   }
-
-  return e(
-    "div",
-    { className: "container" },
-    e("h2", null, "Change Cities"),
-    e("div", { className: "buttons" }, cityButtons),
-    cityBox,
-    e("p", { className: "footer" }, "By Mohamed Anwar")
-  );
 }
 
-var root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(e(App));
+function removeCity() {
+  if (currentCity == "cairo") {
+    cairoExists = false;
+    document.getElementById("cairoButton").disabled = true;
+  }
+
+  if (currentCity == "palestine") {
+    palestineExists = false;
+    document.getElementById("palestineButton").disabled = true;
+  }
+
+  if (currentCity == "emirates") {
+    emiratesExists = false;
+    document.getElementById("emiratesButton").disabled = true;
+  }
+
+  if (cairoExists == true) {
+    changeCity("cairo");
+  } else if (palestineExists == true) {
+    changeCity("palestine");
+  } else if (emiratesExists == true) {
+    changeCity("emirates");
+  } else {
+    document.getElementById("cityBox").style.display = "none";
+    document.getElementById("emptyText").innerHTML = "No cities left";
+  }
+}
