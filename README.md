@@ -22,12 +22,6 @@ A simple React application for switching between different locations and display
 
 https://change-cities-task-mhmdwaelanwrs-projects.vercel.app
 
-## Demo GIF
-
-The repository includes a GitHub Actions workflow that records the app automatically and generates a demo GIF in:
-
-`assets/demo/change-cities-demo.gif`
-
 ## Run locally
 
 ```bash
