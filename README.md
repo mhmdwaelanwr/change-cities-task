@@ -2,6 +2,12 @@
 
 A simple React application for switching between different locations and displaying the selected country's information and flag. The project follows the ChangeCities example from the React front-end lecture while keeping the layout clean, responsive, and easy to understand.
 
+## Demo
+
+<p align="center">
+  <img src="assets/demo/change-cities-demo.gif" alt="Change Cities demo" width="900" />
+</p>
+
 ## Features
 
 - Switch between Cairo, Palestine, and Emirates
