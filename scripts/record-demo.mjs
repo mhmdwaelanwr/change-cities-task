@@ -1,3 +1,4 @@
+// Records a short interaction demo for the README GIF.
 import { chromium } from 'playwright'
 import { copyFileSync, mkdirSync } from 'node:fs'
 
