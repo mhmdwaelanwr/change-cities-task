@@ -2,6 +2,9 @@
 
 A simple React application for switching between different locations and displaying the selected country's information and flag. The project follows the ChangeCities example from the React front-end lecture while keeping the layout clean, responsive, and easy to understand.
 
+> **DEPI Front-End Development Task**  
+> This repository contains a practical assignment completed as part of the **Digital Egypt Pioneers Initiative (DEPI)** Front-End Development training track. It documents hands-on progress through the program and is intended as a learning/task submission rather than a production product.
+
 ## Demo
 
 <p align="center">
@@ -41,4 +44,7 @@ npm run dev
 npm run build
 ```
 
-Created by Mohamed Anwar.
+---
+
+**Training:** Digital Egypt Pioneers Initiative (DEPI) — Front-End Development Track  
+**Author:** [Mohamed Anwar](https://github.com/mhmdwaelanwr)
