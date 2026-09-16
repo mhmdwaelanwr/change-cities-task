@@ -1,72 +1,88 @@
 import { useState } from 'react'
 
-const cities = [
+const cityData = [
   {
-    name: 'Cairo',
+    id: 1,
+    buttonName: 'Cairo',
     country: 'Egypt',
-    icon: '☀️',
-    text: 'A busy city full of history, culture and famous landmarks.',
-    background: 'linear-gradient(135deg, #f59e0b, #f97316)'
+    image: 'https://flagcdn.com/w640/eg.png',
+    description:
+      'Cairo is the capital of Egypt and one of the largest cities in Africa. It is known for its history, culture and famous landmarks.'
   },
   {
-    name: 'Alexandria',
-    country: 'Egypt',
-    icon: '🌊',
-    text: 'A beautiful coastal city on the Mediterranean Sea.',
-    background: 'linear-gradient(135deg, #0ea5e9, #2563eb)'
+    id: 2,
+    buttonName: 'Palestine',
+    country: 'Palestine',
+    image: 'https://flagcdn.com/w640/ps.png',
+    description:
+      'Palestine is known for its historic cities, rich culture and important heritage across the region.'
   },
   {
-    name: 'Luxor',
-    country: 'Egypt',
-    icon: '🏛️',
-    text: 'Known for ancient temples, monuments and the Nile.',
-    background: 'linear-gradient(135deg, #eab308, #ca8a04)'
-  },
-  {
-    name: 'Aswan',
-    country: 'Egypt',
-    icon: '⛵',
-    text: 'A calm southern city famous for the Nile and Nubian culture.',
-    background: 'linear-gradient(135deg, #14b8a6, #0f766e)'
+    id: 3,
+    buttonName: 'Emirates',
+    country: 'United Arab Emirates',
+    image: 'https://flagcdn.com/w640/ae.png',
+    description:
+      'The United Arab Emirates is known for modern cities, architecture, tourism and rapid development.'
   }
 ]
 
 function App() {
-  const [acitveCity, setActiveCity] = useState(0)
+  const [cities, setCities] = useState(cityData)
+  const [activeCity, setActiveCity] = useState(cityData[0])
 
-  function changeCity(index) {
-    setActiveCity(index)
+  function changeCity(city) {
+    setActiveCity(city)
   }
 
-  const city = cities[acitveCity]
+  function removeCity() {
+    if (!activeCity) return
+
+    const newCities = cities.filter((city) => city.id !== activeCity.id)
+    setCities(newCities)
+    setActiveCity(newCities.length > 0 ? newCities[0] : null)
+  }
 
   return (
     <main className="page">
       <section className="app">
-        <div className="heading">
-          <p className="small-title">Explore Egypt</p>
-          <h1>Change Cities</h1>
-          <p>Click a city to change the card.</p>
-        </div>
-
-        <div className="city-card" style={{ background: city.background }}>
-          <div className="city-icon">{city.icon}</div>
-          <h2>{city.name}</h2>
-          <span>{city.country}</span>
-          <p>{city.text}</p>
-        </div>
-
         <div className="city-buttons">
-          {cities.map((item, index) => (
+          {cities.map((city) => (
             <button
-              key={item.name}
-              className={acitveCity === index ? 'active' : ''}
-              onClick={() => changeCity(index)}
+              key={city.id}
+              className={activeCity?.id === city.id ? 'city-btn active' : 'city-btn'}
+              onClick={() => changeCity(city)}
             >
-              {item.name}
+              {city.buttonName}
             </button>
           ))}
+
+          <button
+            className="remove-btn"
+            onClick={removeCity}
+            disabled={!activeCity}
+          >
+            Remove City
+          </button>
         </div>
+
+        {activeCity ? (
+          <div className="city-card">
+            <h1>{activeCity.country}</h1>
+            <p>{activeCity.description}</p>
+
+            <img
+              src={activeCity.image}
+              alt={`${activeCity.country} flag`}
+              className="flag-image"
+            />
+          </div>
+        ) : (
+          <div className="empty-card">
+            <h2>No cities left</h2>
+            <p>All cities have been removed.</p>
+          </div>
+        )}
 
         <p className="footer">By Mohamed Anwar</p>
       </section>
