@@ -1,0 +1,51 @@
+name: Build Screenshot Demo
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/screenshots/*.png'
+      - '.github/workflows/screenshots-demo.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install ImageMagick
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y imagemagick
+
+      - name: Create GIF from screenshots
+        run: |
+          mkdir -p assets/demo
+          convert \
+            -resize 1100x \
+            -delay 130 \
+            -loop 0 \
+            assets/screenshots/one_image.png \
+            assets/screenshots/two_image.png \
+            assets/screenshots/three_image.png \
+            assets/screenshots/four_image.png \
+            -layers Optimize \
+            assets/demo/change-cities-demo.gif
+
+      - name: Commit generated demo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/demo/change-cities-demo.gif
+          if git diff --cached --quiet; then
+            echo "Demo GIF did not change."
+          else
+            git commit -m "Add screenshot demo GIF"
+            git push
+          fi
